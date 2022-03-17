@@ -15,4 +15,25 @@ const nbaPlayers = [
     {firstName: "Kobe",lastName: "Bryant",isActive: false,confrence: "west",_id: uuidv4(),retireAmount: 210},
     {firstName: "Michael",lastName: "Jordan",isActive: false,confrence: "east",_id: uuidv4(),retireAmount: 300},
 ]
-module.exports = nbaPlayerRoutes
+
+//get all the players
+nbaPlayerRouter.get("/", (req, res)=>{
+    res.send(nbaPlayers)
+})
+
+//add new player
+nbaPlayerRouter.post("/", (req,res)=>{
+    const newPlayer = req.body
+    nbaPlayers.push(newPlayer)
+})
+
+nbaPlayerRouter.delete("/:player", (req, res)=>{
+    const playerId = req.body.player
+    const playerIndex = nbaPlayers.findIndex(hooper => hooper._id === playerId)
+    res.send(`nice job! you have defeted ${nbaPlayers.firstName} ${nbaPlayers.lastName}!`)
+})
+
+
+
+
+module.exports = nbaPlayerRouter

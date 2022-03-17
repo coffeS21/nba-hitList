@@ -6,7 +6,7 @@ server.use(express.json())//this turns the req from json to js
 server.use(morgan("dev"))
 
 
-server.use("/nbaPlayers", require("./routes/nbaPlayerRoutes"))
+server.use("/nbaPlayers", require("./routes/nbaPlayerRouter"))
 
 server.listen(9000, ()=>{
     console.log("the server is running")
