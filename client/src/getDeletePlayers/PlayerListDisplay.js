@@ -15,7 +15,7 @@ function PlayerListDisplay(props){
             </section>
             <section>
                 <h4>player id: {_id}</h4>
-                <button onClick={props.delete}>player has been defeted</button>
+                <button onClick={() => props.delete(_id)}>delete player</button>
             </section>
         </div>
     )

@@ -29,10 +29,11 @@ nbaPlayerRouter.post("/", (req,res)=>{
     res.send(newPlayer)
 })
 
-nbaPlayerRouter.delete("/:player", (req, res)=>{
-    const playerId = req.body.player
-    const playerIndex = nbaPlayers.findIndex(hooper => hooper._id === playerId)
-    res.send(`nice job! you have defeted ${nbaPlayers.firstName} ${nbaPlayers.lastName}!`)
+nbaPlayerRouter.delete("/:playerId", (req, res)=>{
+    const playerId = req.params.playerId
+    const playerIndex = nbaPlayers.findIndex(player => player._id === playerId)
+    nbaPlayers.splice(playerIndex, 1)
+    res.send("You won! the player has been defeted")
 })
 
 

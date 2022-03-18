@@ -18,25 +18,29 @@ function AddRemovePlayers(props){
           })
     }
 
-
-    const cookedPlayer = playerId=>{
-        axios.delete(`/nbaPlayers/${playerId}`)
-        .then(res => {
-            setHooperList(prevList => prevList.filter(player=> playerId !== player._id))
-            alert("the player has been remove from the list")
-        })
-        .catch(err => console.log("the player has not been remove from the list"))
-        alert("the player has not been remove from the list")
+    function addPlayer(newPlayer){
+        axios.post("/nbaPlayers", newPlayer)
+        .then(res => console.log(res))
     }
 
-     const mappedHoopers = hooperList.map(looper => <PlayerListDisplay {...looper} key={looper._id} delete={cookedPlayer}/>)
+    function deletePlayer(id){
+        axios.delete(`/nbaPlayers/${id}`)
+        .then(res => {
+            setHooperList(prevList=> prevList.filter(player => player._id !== id))
+        })
+        .catch(err => console.log("error"))
+    }
+
+
+  
+
+     const mappedHoopers = hooperList.map(looper => <PlayerListDisplay {...looper} key={looper._id} delete={deletePlayer}/>)
     useEffect(()=>{
         listOfPlayers()
     },[])
 
     return(
         <div>
-           
             {mappedHoopers}
         </div>
     )
