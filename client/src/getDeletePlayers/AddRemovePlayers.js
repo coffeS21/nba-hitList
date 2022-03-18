@@ -5,7 +5,7 @@ import axios from "axios"
 function AddRemovePlayers(props){
     const [hooperList, setHooperList] = useState([])
 
-    const listOfPlayers = ()=>{
+    function listOfPlayers(){
           axios.get("/nbaPlayers")
           .then(res =>{
               const data = res.data
@@ -18,22 +18,25 @@ function AddRemovePlayers(props){
           })
     }
 
+
     const cookedPlayer = playerId=>{
         axios.delete(`/nbaPlayers/${playerId}`)
         .then(res => {
             setHooperList(prevList => prevList.filter(player=> playerId !== player._id))
+            alert("the player has been remove from the list")
         })
         .catch(err => console.log("the player has not been remove from the list"))
         alert("the player has not been remove from the list")
     }
 
-     const mappedHoopers = hooperList.map(looper => <PlayerListDisplay {...looper} key={looper._id}/>)
+     const mappedHoopers = hooperList.map(looper => <PlayerListDisplay {...looper} key={looper._id} delete={cookedPlayer}/>)
     useEffect(()=>{
         listOfPlayers()
     },[])
 
     return(
         <div>
+           
             {mappedHoopers}
         </div>
     )

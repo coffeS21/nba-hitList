@@ -24,7 +24,9 @@ nbaPlayerRouter.get("/", (req, res)=>{
 //add new player
 nbaPlayerRouter.post("/", (req,res)=>{
     const newPlayer = req.body
+    const newPlayerId = uuidv4()
     nbaPlayers.push(newPlayer)
+    res.send(newPlayer)
 })
 
 nbaPlayerRouter.delete("/:player", (req, res)=>{
