@@ -4,8 +4,7 @@ function AddPlayerForm(props){
 
     const playerData = {
         firstName: "",
-        lastName: "",
-        confrence: ""
+        lastName: ""
     }
     const [newPlayerData, setNewPlayerData] = useState(playerData)
 
@@ -39,13 +38,7 @@ function AddPlayerForm(props){
                 value={newPlayerData.lastName}
                 onChange={handleChange}
                 />
-                <input
-                type="text"
-                placeholder="enter confrence"
-                name="confrence"
-                value={newPlayerData.confrence}
-                onChange={handleChange}
-                />
+              
                 <button>add player to hit list</button>
             </form>
         </>

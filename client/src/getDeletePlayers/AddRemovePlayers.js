@@ -27,6 +27,7 @@ function AddRemovePlayers(props){
         axios.delete(`/nbaPlayers/${id}`)
         .then(res => {
             setHooperList(prevList=> prevList.filter(player => player._id !== id))
+            alert(`you have deleted the selected player from the database!`)
         })
         .catch(err => console.log("error"))
     }
