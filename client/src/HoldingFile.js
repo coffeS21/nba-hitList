@@ -11,7 +11,7 @@ function HoldingFile(){
     }
     return(
         <>    
-            <AddPlayerForm addPlayer={addPlayer}/>
+            <AddPlayerForm submit={addPlayer} btnText="Add Movie"/>
         <AddRemovePlayers/>
         </>
     )

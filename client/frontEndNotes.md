@@ -1,13 +1,5 @@
-what is mongoose
+how to update 
 
--its an ODM
-    -ODM stands for object document mapper
-    -mongoose helps create models or schemes
-
-    -then after you create it in with mongoose you can 
-    query the data
-
-
-
-    your going to connect mongoose to mongodb - but your going to use atlas
-    
+each player should have an edit button
+the button should toggle away from the player info card and to a form
+then on submit it should go back to the player card

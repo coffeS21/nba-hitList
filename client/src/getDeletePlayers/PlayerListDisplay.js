@@ -16,6 +16,7 @@ function PlayerListDisplay(props){
             <section>
                 <h4>player id: {_id}</h4>
                 <button onClick={() => props.delete(_id)}>delete player</button>
+                <button>edit player info</button>
             </section>
         </div>
     )

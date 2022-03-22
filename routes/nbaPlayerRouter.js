@@ -1,5 +1,5 @@
 const express = require("express")
-const nbaPlayer = require("../models/nbaPlayer")
+// const nbaPlayer = require("../models/nbaPlayer")
 // const {v4: uuidv4} = require('uuid')
 const nbaPlayerRouter = express.Router()
 const Hooper = require("../models/nbaPlayer")
@@ -40,13 +40,7 @@ nbaPlayerRouter.post("/", (req, res, next)=>{
         res.status(201).send(savedPlayer)
     })
 })
-// remove player
-// nbaPlayerRouter.delete("/:playerId", (req, res)=>{
-//     const playerId = req.params.playerId
-//     const playerIndex = nbaPlayers.findIndex(player => player._id === playerId)
-//     nbaPlayers.splice(playerIndex, 1)
-//     res.send("You won! the player has been defeted")
-// })
+//remove player
 nbaPlayerRouter.delete("/:playerId", (req, res, next)=>{
   Hooper.findOneAndDelete({_id: req.params.playerId}, (err, deletedItem)=>{
       if(err){
@@ -55,6 +49,30 @@ nbaPlayerRouter.delete("/:playerId", (req, res, next)=>{
       }
       return res.status(200).send(`you have defeted ${deletedItem.firstName} from the database`)
   })
+})
+//update player info 
+nbaPlayerRouter.put("/:playerId", (req,res, next)=> {
+    Hooper.findByIdAndUpdate(
+        {_id: req.params.playerId},//find this player id to be updated
+        req.body, //what updates are to be proformed?
+                /**
+                 * this takes the req.body and merges it with the 
+                 * req.body that is already made and update
+                 * any keys of the key value pair that has been 
+                 * updated
+                 */
+        {new: true},// this is the new updated object
+        /*
+        *the below function lets up know if the update was done or if there was an error
+        */
+        (err, updatedPlayer) => {
+           if(err){
+               res.status(500)
+               return next(err)
+           } 
+           return res.status(201).send(updatedPlayer)
+        } 
+    )
 })
 
 

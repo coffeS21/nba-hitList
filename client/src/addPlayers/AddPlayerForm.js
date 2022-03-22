@@ -13,9 +13,14 @@ function AddPlayerForm(props){
         setNewPlayerData(prevData => ({...prevData, [name]: value}))
     } 
 
+    // function handleSubmit(e){
+    //     e.preventDefault()
+    //     props.addPlayer(newPlayerData)
+    //     setNewPlayerData(playerData)
+    // }
     function handleSubmit(e){
         e.preventDefault()
-        props.addPlayer(newPlayerData)
+        props.submit(newPlayerData)
         setNewPlayerData(playerData)
     }
 
@@ -39,7 +44,7 @@ function AddPlayerForm(props){
                 onChange={handleChange}
                 />
               
-                <button>add player to hit list</button>
+                <button>{props.btnText}</button>
             </form>
         </>
     )
