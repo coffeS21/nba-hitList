@@ -4,7 +4,9 @@ function AddPlayerForm(props){
 
     const playerData = {
         firstName: "",
-        lastName: ""
+        lastName: "",
+        bountyAmount:""
+        
     }
     const [newPlayerData, setNewPlayerData] = useState(playerData)
 
@@ -12,12 +14,7 @@ function AddPlayerForm(props){
         const {name, value} = e.target
         setNewPlayerData(prevData => ({...prevData, [name]: value}))
     } 
-
-    // function handleSubmit(e){
-    //     e.preventDefault()
-    //     props.addPlayer(newPlayerData)
-    //     setNewPlayerData(playerData)
-    // }
+    
     function handleSubmit(e){
         e.preventDefault()
         props.submit(newPlayerData)
@@ -43,7 +40,14 @@ function AddPlayerForm(props){
                 value={newPlayerData.lastName}
                 onChange={handleChange}
                 />
-              
+                <input
+                type="text"
+                placeholder="enter bounty amount"
+                name="bountyAmount"
+                value={newPlayerData.bountyAmount}
+                onChange={handleChange}
+                />
+                
                 <button>{props.btnText}</button>
             </form>
         </>

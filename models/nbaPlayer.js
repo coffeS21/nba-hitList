@@ -3,20 +3,14 @@ const nbaPlayer = mongoose.Schema
 
 const nbaPlayerSchema = new nbaPlayer({
     firstName:{
-        type: String,
+        type: String
     },
-    firstName:{
-        type: String,
+    lastName:{
+        type: String
     },
-    // confrence:{
-    //     type: Bollean,
-        
-    // },
-    // postion:{
-    //     type:String
-    // },
     bountyAmount:{
-        type: Number
+        type: String,
+        
     }
 })
 
